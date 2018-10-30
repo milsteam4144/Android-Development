@@ -5,11 +5,20 @@ import java.util.UUID;
 
 public class Crime
 {
+    //Declare member fields
     private UUID mId; //Unified Unique Identifier
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
 
+    //Constructor that initializes the ID and date fields
+    public Crime()
+    {
+        mId = UUID.randomUUID();
+        mDate = new Date();
+    }
+
+    //Getters and Setters
     public UUID getId() {
         return mId;
     }
@@ -42,9 +51,4 @@ public class Crime
         this.mSolved = mSolved;
     }
 
-    public Crime()
-    {
-        mId = UUID.randomUUID();
-        mDate = new Date();
-    }
 }
