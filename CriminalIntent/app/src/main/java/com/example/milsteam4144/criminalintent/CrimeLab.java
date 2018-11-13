@@ -14,6 +14,13 @@ public class CrimeLab {
     //Private Constructor
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
+        //Use a for loop to populate the list with 100 crimes
+        for (int i = 0; i < 100; i++){
+            Crime crime = new Crime ();
+            crime.setTitle("Crime #" + i);
+            crime.setSolved(i % 2 == 0); //Every other one
+            mCrimes.add(crime);
+        }
     }
 
     //Getter for the list mCrimes, returns the entire list
