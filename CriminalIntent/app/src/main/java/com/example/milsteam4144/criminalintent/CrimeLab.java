@@ -29,7 +29,7 @@ public class CrimeLab {
     }
 
     //Returns the specific crime if the given id matches that of a crime in the list
-    public Crime getCrimeByID(UUID id) {
+    public Crime getCrime(UUID id) {
         for (Crime crime : mCrimes) {
             if (crime.getId().equals(id)) {
                 return crime;
