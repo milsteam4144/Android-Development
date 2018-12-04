@@ -1,14 +1,20 @@
 package com.example.milsteam4144.photogallery;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
+
 public class PhotoGalleryFragment extends Fragment {
+
+    private static final String TAG = "PhotoGalleryFragment";
 
     private RecyclerView mPhotoRecyclerView;
 
@@ -20,6 +26,7 @@ public class PhotoGalleryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        new FetchItemsTask().execute();
     }
 
     @Override
@@ -30,6 +37,14 @@ public class PhotoGalleryFragment extends Fragment {
         mPhotoRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         return v;
+    }
+
+    private class FetchItemsTask extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected Void doInBackground(Void...params){
+            new FlickrFetchr().fetchItems();
+            return null;
+        }
     }
 
 }
